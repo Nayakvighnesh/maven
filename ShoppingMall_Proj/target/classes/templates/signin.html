@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>login</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<style>
+
+    body{
+		font-family: san serif;
+        background-image: url('Images/login3.jpg');
+        background-repeat: no-repeat;
+background-attachment: fixed; 
+background-size: 100% 100%;
+}
+
+
+
+.loginbox {
+	margin: 50px 75px 50px;
+	position: relative;
+	top: 50px;
+	left: 350px;
+	box-sizing: border-box;
+	width: 350px;
+	height: 370px;
+	background-color:transparent;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 3px;
+}
+
+/*
+
+.image {
+	margin-top: 2px;
+	width: 50px;
+	height: 50px;
+	border-style: solid;
+	margin-left: 150px;
+	border-radius: 20px;
+}
+*/
+.loginbox input[type="submit"]:hover {
+	cursor: pointer;
+}
+
+h2 {
+	padding: 0 0 20px;
+	text-align: center;
+}
+
+.loginbox p {
+	font-weight: bold;
+	margin-left: 25px;
+	font-size: 20px;
+}
+
+.loginbox input {
+	width: 250px;
+	height: 25px;
+	margin-left: 20px;
+}
+
+.loginbox input[type="text"], input[type="password"] {
+	border: none;
+	border-bottom: 1px solid black;
+}
+
+.loginbox input[type="submit"] {
+	width: 120px;
+	margin-left: 110px;
+	border: none;
+	margin-top: 15px;
+	height: 25px;
+	background-color: light grey;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 10px;
+}
+
+.loginbox a {
+	font-size: 20px;
+	color: dark grey;
+	line-height: 15px;
+	text-decoration: none;
+	margin: 20px;
+}
+
+.new {
+	margin-bottom: 3px;
+}
+
+.btnimg {
+	width: 20px;
+	height: 15px;
+}
+
+/* Style for navigation bar*/
+
+
+nav .logo {
+	color: black;
+	font-size: 33px;
+	font-weight: bold;
+	line-height: 70px;
+	padding-left: 110px;
+}
+
+nav {
+	height: 70px;
+	background: blanchedalmond;
+	
+}
+
+nav ul {
+	float: right;
+	margin-right: 30px;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+nav ul li a {
+	color: black;
+	display: block;
+	padding: 0 15px;
+	line-height: 70px;
+	font-size: 20px;
+	background: blanchedalmond;
+	transition: .5s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+	color: #7cdb23;
+}
+
+</style>
+</head>
+<body>
+     <nav>
+        <label class="logo">ShoppersStop</label>
+		<ul>
+		   <li><a class="#" href="#">Home</a></li>
+           <li><a class="#" href="#" th:href="@{/admin/new}">Signup</a></li>
+		 
+		</ul>
+	 </nav>
+
+
+	<div class="loginbox">
+		
+		<h2 class="text-black  font-weight-bold " >login here</h2>
+		<form action="#" th:action="@{/admin/login}" th:object="${user}" method="post">
+			<p>username</P>
+			<input type="text" th:field="*{username}"  name="utype" placeholder="username" required ><br>
+			<p>password</P>
+			<input type="password" th:field="*{password}" class"t1" name="ptype" placeholder="password"
+				required ><br> <input type="submit" name="usub"
+				value="login" /> <br>
+			<br> &nbsp&nbsp;<a href="">forgot password?</a> <br>
+
+			<p>
+				&nbsp&nbsp;create new account&nbsp&nbsp&nbsp;
+                <a th:href="@{/admin/new}">signup</a>
+			</p>
+			</form>
+				</div>
+				</body>
+</html>
+			<!--  
+			<table border="0" width="100%" height="35px">
+				<tr>
+					<th><button type="button">
+					
+							
+						</button></th>
+					<!--  	<img src="google-logo.png"  class="btnimg"></img>
+						</button></th>
+					<th><button type="button">
+							<img src="facebook-button.png" class="btnimg"></img>
+							-->
+				</tr>
+				  -->
+				

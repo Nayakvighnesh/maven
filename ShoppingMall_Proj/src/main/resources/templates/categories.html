@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>list category</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+    nav .logo {
+        color: black;
+        font-size: 33px;
+        font-weight: bold;
+        line-height: 70px;
+        padding-left: 110px;
+    }
+    
+    nav {
+        height: 70px;
+        background: blanchedalmond;
+        
+    }
+    
+    nav ul {
+        float: right;
+        margin-right: 30px;
+    }
+    
+    nav ul li {
+        display: inline-block;
+    }
+    
+    nav ul li a {
+        color: black;
+        display: block;
+        padding: 0 15px;
+        line-height: 70px;
+        font-size: 20px;
+        background: blanchedalmond;
+        transition: .5s;
+    }
+    
+    nav ul li a:hover, nav ul li a.active {
+        color: #7cdb23;
+    }
+    
+    nav ul ul {
+        position: absolute;
+        top: 85px;
+        border-top: 3px solid #23dbdb;
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    nav ul li:hover>ul {
+        top: 70px;
+        opacity: 1;
+        visibility: visible;
+        transition: .3s linear;
+    }
+    
+    nav ul ul li {
+        width: 150px;
+        display: list-item;
+        position: relative;
+        border: 1px solid #042331;
+        border-top: none;
+    }
+    
+    nav ul ul li a {
+        line-height: 50px;
+    }
+    
+    nav ul ul ul {
+        border-top: none;
+    }
+    
+    nav ul ul ul li {
+        position: relative;
+        top: -70px;
+        left: 150px;
+    }
+    
+    nav ul ul li a i {
+        margin-left: 45px;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+    
+    body {
+        font-family: sans-serif;
+        overflow: hidden;
+        user-select: none;
+    }
+</style> 
+</head>
+<body>
+ <nav>
+		<label class="logo">ShoppersStop</label>
+		<ul>
+		   <li><a class="#" href="#" th:href="@{'/shop'}">AdminHome</a></li>
+		   <li><a href="#" th:href="@{'/admin/categories/new'}">AddCategory</a></li>
+		
+		   <li>
+			   <a href="#">Produts
+			   <i class="fas fa-caret-down"></i>
+			   </a>
+			   <ul>
+				  <li><a href="#" th:href="@{'/admin/products/add'}">AddProduct</a></li>
+				  <li><a href="#" th:href="@{'/admin/products'}">ListProduct</a></li>
+				 
+			   </ul>
+			</li>
+
+
+
+		  
+		   <li><a href="#" th:action="@{/admin/logout}">Logout</a></li>
+		</ul>
+	 </nav>
+
+	<div class="container text-center">
+		<div>
+			<h3>category</h3>
+		</div>
+        <tr>
+            <div align = "left" >		   
+                 <h3 class="btn btn-info"><a  th:href="@{'/admin/categories/new'}">Add new</a></h3>     
+            </div>
+        
+        </tr>
+		<div >
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>status</th>
+                    <th>Action</th>
+				</tr>
+				</thead>
+				<tbody>
+
+					<th:block th:each="category : ${listCategories}">
+						<tr>
+							<td>[[${category.id}]]</td>
+							<td>[[${category.name}]]</td>
+							<td>[[${category.status}]]</td>
+							
+                            <td>
+                                <a class="btn btn-info" th:href="@{'/admin/category/delete/' + ${category.id}}">Delete</a>
+                            </td>	
+						</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</body>
+</html>

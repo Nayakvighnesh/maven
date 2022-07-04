@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<style>
+
+body{
+    
+background-image: url('Images/loginlight.jpg'); 
+background-repeat: no-repeat;
+background-attachment: fixed; 
+background-size: 100% 100%;
+}
+nav .logo {
+	color: black;
+	font-size: 33px;
+	font-weight: bold;
+	line-height: 70px;
+	padding-left: 110px;
+}
+
+nav {
+	height: 70px;
+	background: blanchedalmond;
+	
+}
+
+nav ul {
+	float: right;
+	margin-right: 30px;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+nav ul li a {
+	color: black;
+	display: block;
+	padding: 0 15px;
+	line-height: 70px;
+	font-size: 20px;
+	background: blanchedalmond;
+	transition: .5s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+	color: #7cdb23;
+}
+
+</style>
+</head>
+
+<body>
+    <nav>
+        <label class="logo">ShoppersStop</label>
+		<ul>
+		   <li><a class="#" href="#">Home</a></li>
+           <li><a class="#" href="#" th:href="@{/admin/loginpage}">Login</a></li>
+		 
+		</ul>
+	 </nav>
+    
+    <h3 class="text-black text-center font-weight-bold bg-none" style="font-size: 35px;">&nbsp&nbsp&nbspRegistration form</h3>
+     
+        <div class="container"><br>
+            
+            <div class="col-lg-6 m-auto d-block">
+                
+                <form action="#" onsubmit="return validation()" class="background-color:transparent" th:action="@{/admin/save}" th:object="${admin}" method="post">
+                    
+                    <div class="form-group">
+                        <label for="user" class="font-weight-bold"> First Name </label>
+                        <input type="text" name="user"  th:field="*{firstname}" class="form-control" id="user"  placeholder="first name" autocomplete="off">
+                        <span id="username" class="text-danger font-weight-bold"> </span>
+                    </div>
+                  
+                    <div class="form-group">
+                        <label for="userlast" class="font-weight-bold"> Last Name </label>
+                        <input type="text" name="user" th:field="*{lastname}"  class="form-control" id="userlast"  placeholder="last name" autocomplete="off">
+                        <span id="userlastname" class="text-danger font-weight-bold"> </span>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label class="font-weight-bold"> Email: </label>
+                        <input type="text" name="email" th:field="*{username}" class="form-control" id="emails"   placeholder="john123@gmail.com" autocomplete="off">
+                        <span id="emailids" class="text-danger font-weight-bold"> </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="font-weight-bold"> Password: </label>
+                        <input type="text" name="pass" th:field="*{password}" class="form-control" id="pass"  placeholder="passsword" autocomplete="off">
+                        <span id="passwords" class="text-danger font-weight-bold"> </span>
+                    </div>
+    
+    
+                    <div class="form-group">
+                        <label class="font-weight-bold"> Mobile Number: </label>
+                        <input type="text" name="mobile" th:field="*{phoneno}"   class="form-control" id="mobileNumber"  placeholder="mobile no" autocomplete="off">
+                        <span id="mobileno" class="text-danger font-weight-bold"> </span>
+                    </div>
+    
+                   
+    
+                    <input type="submit" name="submit" value="submit" class="btn btn-success" 	autocomplete="off">
+    
+    
+                </form><br><br>
+    
+    
+            </div>
+        </div>
+      
+        <script type="text/javascript">
+		
+
+            function validation(){
+    
+                var user = document.getElementById('user').value;
+                var userlast = document.getElementById('userlast').value;
+                var pass = document.getElementById('pass').value;
+                var mobileNumber = document.getElementById('mobileNumber').value;
+                var emails = document.getElementById('emails').value;
+    
+    
+    
+    
+    
+                if(user == ""){
+                    document.getElementById('username').innerHTML =" * Please fill the firstname field";
+                    return false;
+                }
+                if((user.length <= 2) || (user.length > 20)) {
+                    document.getElementById('username').innerHTML =" * firstname lenght must be between 2 and 20";
+                    return false;	
+                }
+                if(!isNaN(user)){
+                    document.getElementById('username').innerHTML =" * only characters are allowed";
+                    return false;
+                }
+    
+                   
+                if(userlast == ""){
+                    document.getElementById('userlastname').innerHTML =" * Please fill the lastname field";
+                    return false;
+                }
+                if((userlast.length <= 2) || (user.length > 20)) {
+                    document.getElementById('userlastname').innerHTML =" * firstname lenght must be between 2 and 20";
+                    return false;	
+                }
+                if(!isNaN(userlast)){
+                    document.getElementById('userlastname').innerHTML =" * only characters are allowed";
+                    return false;
+                }
+    
+    
+    
+    
+    
+                if(pass == ""){
+                    document.getElementById('passwords').innerHTML =" * Please fill the password field";
+                    return false;
+                }
+                if((pass.length <= 5) || (pass.length > 20)) {
+                    document.getElementById('passwords').innerHTML =" * Passwords lenght must be between  5 and 20";
+                    return false;	
+                }
+    
+           
+    
+    
+                if(mobileNumber == ""){
+                    document.getElementById('mobileno').innerHTML =" * Please fill the mobile NUmber field";
+                    return false;
+                }
+                if(isNaN(mobileNumber)){
+                    document.getElementById('mobileno').innerHTML =" * user must write digits only not characters";
+                    return false;
+                }
+                if(mobileNumber.length!=10){
+                    document.getElementById('mobileno').innerHTML =" * Mobile Number must be 10 digits only";
+                    return false;
+                }
+    
+    
+    
+                if(emails == ""){
+                    document.getElementById('emailids').innerHTML =" * Please fill the email id field";
+                    return false;
+                }
+                if(emails.indexOf('@') <= 0 ){
+                    document.getElementById('emailids').innerHTML =" * @ Invalid Position";
+                    return false;
+                }
+    
+                if((emails.charAt(emails.length-4)!='.') && (emails.charAt(emails.length-3)!='.')){
+                    document.getElementById('emailids').innerHTML ="  Invalid Position";
+                    return false;
+                }
+                
+                
+            }
+    
+        </script>
+    
+    </body>
+    </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>list products</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<style>
+
+nav .logo {
+        color: black;
+        font-size: 33px;
+        font-weight: bold;
+        line-height: 70px;
+        padding-left: 110px;
+    }
+    
+    nav {
+        height: 70px;
+        background: blanchedalmond;
+        
+    }
+    
+    nav ul {
+        float: right;
+        margin-right: 30px;
+    }
+    
+    nav ul li {
+        display: inline-block;
+    }
+    
+    nav ul li a {
+        color: black;
+        display: block;
+        padding: 0 15px;
+        line-height: 70px;
+        font-size: 20px;
+        background: blanchedalmond;
+        transition: .5s;
+    }
+    
+    nav ul li a:hover, nav ul li a.active {
+        color: #7cdb23;
+    }
+    
+    nav ul ul {
+        position: absolute;
+        top: 85px;
+        border-top: 3px solid #23dbdb;
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    nav ul li:hover>ul {
+        top: 70px;
+        opacity: 1;
+        visibility: visible;
+        transition: .3s linear;
+    }
+    
+    nav ul ul li {
+        width: 150px;
+        display: list-item;
+        position: relative;
+        border: 1px solid #042331;
+        border-top: none;
+    }
+    
+    nav ul ul li a {
+        line-height: 50px;
+    }
+    
+    nav ul ul ul {
+        border-top: none;
+    }
+    
+    nav ul ul ul li {
+        position: relative;
+        top: -70px;
+        left: 150px;
+    }
+    
+    nav ul ul li a i {
+        margin-left: 45px;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+    
+    body {
+        font-family: sans-serif;
+        overflow: hidden;
+        user-select: none;
+    }
+    </style>
+</head>
+<body>
+    <nav>
+         <label class="logo">ShoppersStop</label>
+         <ul>
+            <li><a class="#" href="#" th:href="@{'/shop'}">AdminHome</a></li>
+            <li><a href="#" th:href="@{'/admin/products/add'}">AddProduct</a></li>
+         
+            <li>
+                <a href="#">Category
+                <i class="fas fa-caret-down"></i>
+                </a>
+                <ul>
+                   <li><a href="#" th:href="@{'/admin/categories/new'}">AddCategory</a></li>
+                   <li><a href="#" th:href="@{'/admin/categories'}">ListCategory</a></li>
+                  
+                </ul>
+             </li>
+ 
+            <li><a href="#" th:action="@{/admin/logout}">Logout</a></li>
+         </ul>
+      </nav>
+      <div class="container-fluid">
+
+        <a th:href="@{/admin/products/add}" style="margin: 30px 0" class="btn btn-primary">Add Product</a>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Preview</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Update</th>
+            </tr>
+            </thead>
+            <tbody>
+    
+            <tr th:each="product, iStat : ${products}">
+                <th scope="row" th:text="${iStat.index + 1}">1</th>
+                <td th:text="${product.name}">Larry</td>
+                <td th:text="${product.category.name}">Larry</td>
+                <td><img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + product.imageName}}"></td>
+    
+                <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></td>
+                <td><a href="" th:href="@{/admin/product/update/{id}(id=${product.id})}" class="btn btn-warning">Update</a></td>
+    
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+    </html>
